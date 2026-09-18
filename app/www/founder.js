@@ -756,7 +756,7 @@
     await caricaAnnunci();
   }
   /* ═══ FOUNDER TEAM SUPPORT ═══ */
-  const FT_VER = "f181";
+  const FT_VER = "f182";
   const ROTTE = {
     "Segnala problema": ["FOUNDER", "Head of User Support", "User Support"],
     "Segnala Staff": ["FOUNDER", "Head of App Security", "App Security"],
@@ -1097,13 +1097,19 @@
     try {
       if (document.getElementById("opIntro")) return;
       const ov = document.createElement("div"); ov.id = "opIntro";
-      const rb = document.createElement("div"); rb.className = "opIntroRb";
-      const ray = document.createElement("div"); ray.className = "opIntroRay";
-      const w = document.createElement("div"); w.className = "opIntroWord"; w.textContent = "Opal Note";
-      ov.appendChild(rb); ov.appendChild(w); ov.appendChild(ray);
+      const beam = document.createElement("div"); beam.className = "opIntroBeam";
+      const flash = document.createElement("div"); flash.className = "opIntroFlash";
+      const w = document.createElement("div"); w.className = "opIntroWord2";
+      const TINTE = ["#C7AEE8", "#9AD5DE", "#F2B3CF", "#AECBF2", "#D9BCEF", "#A9DFC8", "#F4D2A8", "#BCC6F2", "#E3B7E4"];
+      "Opal Note".split("").forEach((ch, i) => {
+        const sp = document.createElement("span");
+        sp.textContent = ch; sp.style.color = TINTE[i % TINTE.length];
+        w.appendChild(sp);
+      });
+      ov.appendChild(flash); ov.appendChild(w); ov.appendChild(beam);
       document.body.appendChild(ov);
-      setTimeout(() => ov.classList.add("via"), 3550);
-      setTimeout(() => { try { ov.remove(); } catch (e) {} }, 4400);
+      setTimeout(() => ov.classList.add("via"), 2750);
+      setTimeout(() => { try { ov.remove(); } catch (e) {} }, 3600);
     } catch (e) {}
   })();
   async function registraProfilo() {
