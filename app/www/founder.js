@@ -756,7 +756,7 @@
     await caricaAnnunci();
   }
   /* ═══ FOUNDER TEAM SUPPORT ═══ */
-  const FT_VER = "f186";
+  const FT_VER = "f187";
   const ROTTE = {
     "Segnala problema": ["FOUNDER", "Head of User Support", "User Support"],
     "Segnala Staff": ["FOUNDER", "Head of App Security", "App Security"],
@@ -1209,6 +1209,7 @@
       const hit = squadra.find(([n]) => n && testo.indexOf(n) >= 0);
       if (!hit) return;
       const [, ruolo, isF] = hit;
+      if (isF) card.classList.add("ftVetroScuro");
       const h = card.querySelector(".hint");
       const voglio = (isF ? "👑 " : "") + ruolo;
       if (h && h.textContent !== voglio) { h.textContent = voglio; if (isF) h.style.color = "#FFD34D"; h.style.fontWeight = "800"; }
