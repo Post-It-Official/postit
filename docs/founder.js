@@ -399,6 +399,7 @@
       w.onclick = () => scheda(m);
       const c = el("div", "ftNote");
       c.style.background = coloreRuolo(principale);
+      c.style.setProperty("--rc", coloreVivoFT(principale));
       if (!((m.deco || {}).pin) || (m.deco || {}).pin === "classic") c.appendChild(el("span", "ftHole"));
       c.appendChild(el("h4", null, m.nome));
       if (principale) c.appendChild(el("span", "ftPill main", principale));
@@ -755,7 +756,7 @@
     await caricaAnnunci();
   }
   /* ═══ FOUNDER TEAM SUPPORT ═══ */
-  const FT_VER = "f180";
+  const FT_VER = "f181";
   const ROTTE = {
     "Segnala problema": ["FOUNDER", "Head of User Support", "User Support"],
     "Segnala Staff": ["FOUNDER", "Head of App Security", "App Security"],
@@ -1092,6 +1093,19 @@
     ov.append(scroll, barra);
     document.body.appendChild(ov);
   }
+  (function introOpale() {
+    try {
+      if (document.getElementById("opIntro")) return;
+      const ov = document.createElement("div"); ov.id = "opIntro";
+      const rb = document.createElement("div"); rb.className = "opIntroRb";
+      const ray = document.createElement("div"); ray.className = "opIntroRay";
+      const w = document.createElement("div"); w.className = "opIntroWord"; w.textContent = "Opal Note";
+      ov.appendChild(rb); ov.appendChild(w); ov.appendChild(ray);
+      document.body.appendChild(ov);
+      setTimeout(() => ov.classList.add("via"), 3550);
+      setTimeout(() => { try { ov.remove(); } catch (e) {} }, 4400);
+    } catch (e) {}
+  })();
   async function registraProfilo() {
     const s2 = sb(); if (!s2) return;
     try {
@@ -1176,6 +1190,12 @@
     while ((nd = w.nextNode())) { if (nd.parentElement && !nd.parentElement.closest(salva) && /👑/.test(nd.textContent)) da.push(nd); }
     da.forEach((x) => { x.textContent = x.textContent.replace(/\s*👑\s*/g, " "); });
   };
+  function coloreVivoFT(r) {
+    const TAV = ["#F48FB1", "#90CAF9", "#80DEEA", "#A5D6A7", "#CE93D8", "#FFAB91", "#B39DDB", "#4DB6AC", "#FFCC80"];
+    let h = 0; const t = String(r || "");
+    for (let i = 0; i < t.length; i++) h = (h * 31 + t.charCodeAt(i)) >>> 0;
+    return TAV[h % TAV.length];
+  }
   function riaffermaEtichette() {
     const squadra = nomiSquadra(); if (!squadra.length) return;
     document.querySelectorAll(".userCard[data-ftd]").forEach((card) => {
