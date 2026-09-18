@@ -317,7 +317,7 @@
           const dv = el("div", "ftDiag"); const db = el("button", "ftGo", "🩺 Diagnosi Database");
           db.onclick = () => diagnosi(dv); idc.append(db, dv);
         }
-        const em = el("button", "ftGo", "✏️ Il mio post-it");
+        const em = el("button", "ftGo", "✏️ Il mio nota");
         em.onclick = () => formMio(ovl, io);
         idc.appendChild(em);
         idc.appendChild(el("p", "ftHint", "Questa identità è legata a questo telefono e non si cambia."));
@@ -363,8 +363,8 @@
     if (cfg && cfg.founder_pid) {
       const fd = (cfg || {}).data || {};
       const fNome = fd.founderName || "Filippo Fagone";
-      const fBio = fd.founderBio || "Creatore e unico sviluppatore di Post-It. 👑";
-      const fLav = fd.founderLavoro || "Creatore e unico sviluppatore di Post-It.";
+      const fBio = fd.founderBio || "Creatore e unico sviluppatore di Opal Note. 👑";
+      const fLav = fd.founderLavoro || "Creatore e unico sviluppatore di Opal Note.";
       const fPin = fd.founderPin || "classic";
       const fw = el("div", "ftWrap");
       fw.style.rotate = "-2deg";
@@ -589,7 +589,7 @@
 
   function formMio(ovl, m) {
     const f = el("div", "ftCard");
-    f.appendChild(el("h4", null, "Il tuo post-it"));
+    f.appendChild(el("h4", null, "Il tuo nota"));
     const bio = el("textarea", "ftTa"); bio.placeholder = "La tua biografia…"; bio.value = m.bio || "";
     let pinScelto = (m.deco || {}).pin || "classic";
     const pinWrap = pinPicker(pinScelto, (v) => (pinScelto = v));
@@ -756,7 +756,7 @@
     await caricaAnnunci();
   }
   /* ═══ FOUNDER TEAM SUPPORT ═══ */
-  const FT_VER = "f185";
+  const FT_VER = "f186";
   const ROTTE = {
     "Segnala problema": ["FOUNDER", "Head of User Support", "User Support"],
     "Segnala Staff": ["FOUNDER", "Head of App Security", "App Security"],
@@ -1028,7 +1028,7 @@
     box.style.cssText = "max-width:360px;";
     const durata = bnn.fine ? "fino al " + new Date(bnn.fine).toLocaleDateString("it-IT", { day: "2-digit", month: "2-digit", year: "numeric" }) : "per sempre";
     const h = el("h2", null, "🚫 Alt!"); h.style.cssText = "color:#FF8A80;font-size:34px;margin:0 0 10px;";
-    const p1 = el("p", null, "Sei stato bannato da Post-It per: «" + (bnn.motivo || "violazione delle regole") + "» — " + durata + ".");
+    const p1 = el("p", null, "Sei stato bannato da Opal Note per: «" + (bnn.motivo || "violazione delle regole") + "» — " + durata + ".");
     p1.style.cssText = "font-size:15px;line-height:1.5;";
     const p2 = el("p", null, "Se credi che sia stato un errore, apri un Founder Support Ticket con la dicitura «Ban appeal» per discuterne e annullarlo.");
     p2.style.cssText = "font-size:13px;opacity:.85;line-height:1.5;";
@@ -1067,7 +1067,7 @@
     ov.style.cssText = "position:fixed;inset:0;z-index:999998;background:#1B1814;color:#F2E7CF;display:flex;flex-direction:column;padding:0;";
     const scroll = el("div");
     scroll.style.cssText = "flex:1 1 auto;overflow-y:auto;padding:22px 20px 10px;font-size:13.5px;line-height:1.55;";
-    scroll.innerHTML = '<h2 style="margin:0 0 8px;color:#FFD34D;">Benvenuto su Post-It! 👋</h2>\n<p>Prima di cominciare la tua esperienza, ti invitiamo a leggere alcune regole fondamentali da rispettare.</p>\n<p>Sarai libero di parlare di qualsiasi cosa nei tuoi gruppi personali.<br>Tuttavia, se un utente dovesse segnalarti per una delle seguenti violazioni, incorrerai in sanzioni severe.</p>\n<p><b style="color:#FF8A80;">Violazioni gravi:</b><br>– Razzismo<br>– Omotransfobia<br>– Incitazione a qualsiasi atto violento o discriminatorio nei confronti di terzi<br>– Apologia di persone e/o ideali potenzialmente dannosi per la comunità<br>– Hacking<br>– Pedofilia<br>– Discriminazione di qualsiasi tipo</p>\n<p><b>Punizione per violazioni gravi:</b> Ban permanente.</p>\n<p><b style="color:#FFB74D;">Violazioni borderline:</b><br>– Insulti<br>– Minacce di qualsiasi tipo<br>– Qualsiasi atto che possa ledere l\'onore o la salute mentale e fisica di una persona</p>\n<p><b>Punizione per violazioni borderline:</b> Strike, flag o ban temporaneo, a seconda della gravità.</p>\n<p><b style="color:#FFD34D;">Glossario delle sanzioni:</b></p>\n<p><b>– Ban:</b> Allontanamento dalla piattaforma, che può essere temporaneo o permanente a seconda della gravità dell\'infrazione. Entrambe le tipologie di ban possono essere annullate inviando un ricorso (appello) al Founder Team, qualora questo venga esaminato e accettato.</p>\n<p><b>– Strike:</b> Ammonizioni formali assegnate in caso di violazioni borderline. Si possono accumulare un massimo di 3 strike, dopodiché si procederà al ban (temporaneo o permanente) in base alla gravità complessiva delle violazioni commesse.</p>\n<p><b>– Flag:</b> Bandierine rosse visibili sul profilo. Servono a segnalare agli altri membri della community di prestare attenzione, evidenziando che l\'utente ha già dei precedenti.</p>\n<p>Ci teniamo a specificare che il nostro team prenderà provvedimenti soltanto nel caso in cui venga inviata una segnalazione ufficiale.</p>\n<p><b style="color:#FFD34D;">Nota del Team:</b><br>Il Founder Team si riserva il diritto di prendere provvedimenti — sia a seguito di una segnalazione diretta sia di propria iniziativa — anche nei confronti di comportamenti non espressamente elencati tra le violazioni, qualora siano ritenuti inopportuni, dannosi o contrari allo spirito della piattaforma.</p>\n<p>Post-It è pensato per gruppi di amici e aziende: per questo motivo ognuno è libero di gestire la propria community applicando le proprie regole interne.<br>Tuttavia, le norme sopra elencate restano valide per l\'intera piattaforma e saremo costretti a intervenire in caso di infrazione.</p>\n<p>Qualora avessi bisogno di chiarire dubbi, segnalare problemi o utenti, o semplicemente esprimere un\'opinione sull\'app, potrai aprire un ticket nella sezione «Conosci il Founder Team», selezionando la categoria più adatta alla tua richiesta.</p>\n<p>Ci auguriamo che la tua esperienza su Post-It sia di tuo gradimento!</p>\n<p style="text-align:right;font-weight:800;color:#FFD34D;">—Il Founder Team 👑🌟</p>';
+    scroll.innerHTML = '<h2 style="margin:0 0 8px;color:#FFD34D;">Benvenuto su Opal Note! 👋</h2>\n<p>Prima di cominciare la tua esperienza, ti invitiamo a leggere alcune regole fondamentali da rispettare.</p>\n<p>Sarai libero di parlare di qualsiasi cosa nei tuoi gruppi personali.<br>Tuttavia, se un utente dovesse segnalarti per una delle seguenti violazioni, incorrerai in sanzioni severe.</p>\n<p><b style="color:#FF8A80;">Violazioni gravi:</b><br>– Razzismo<br>– Omotransfobia<br>– Incitazione a qualsiasi atto violento o discriminatorio nei confronti di terzi<br>– Apologia di persone e/o ideali potenzialmente dannosi per la comunità<br>– Hacking<br>– Pedofilia<br>– Discriminazione di qualsiasi tipo</p>\n<p><b>Punizione per violazioni gravi:</b> Ban permanente.</p>\n<p><b style="color:#FFB74D;">Violazioni borderline:</b><br>– Insulti<br>– Minacce di qualsiasi tipo<br>– Qualsiasi atto che possa ledere l\'onore o la salute mentale e fisica di una persona</p>\n<p><b>Punizione per violazioni borderline:</b> Strike, flag o ban temporaneo, a seconda della gravità.</p>\n<p><b style="color:#FFD34D;">Glossario delle sanzioni:</b></p>\n<p><b>– Ban:</b> Allontanamento dalla piattaforma, che può essere temporaneo o permanente a seconda della gravità dell\'infrazione. Entrambe le tipologie di ban possono essere annullate inviando un ricorso (appello) al Founder Team, qualora questo venga esaminato e accettato.</p>\n<p><b>– Strike:</b> Ammonizioni formali assegnate in caso di violazioni borderline. Si possono accumulare un massimo di 3 strike, dopodiché si procederà al ban (temporaneo o permanente) in base alla gravità complessiva delle violazioni commesse.</p>\n<p><b>– Flag:</b> Bandierine rosse visibili sul profilo. Servono a segnalare agli altri membri della community di prestare attenzione, evidenziando che l\'utente ha già dei precedenti.</p>\n<p>Ci teniamo a specificare che il nostro team prenderà provvedimenti soltanto nel caso in cui venga inviata una segnalazione ufficiale.</p>\n<p><b style="color:#FFD34D;">Nota del Team:</b><br>Il Founder Team si riserva il diritto di prendere provvedimenti — sia a seguito di una segnalazione diretta sia di propria iniziativa — anche nei confronti di comportamenti non espressamente elencati tra le violazioni, qualora siano ritenuti inopportuni, dannosi o contrari allo spirito della piattaforma.</p>\n<p>Opal Note è pensato per gruppi di amici e aziende: per questo motivo ognuno è libero di gestire la propria community applicando le proprie regole interne.<br>Tuttavia, le norme sopra elencate restano valide per l\'intera piattaforma e saremo costretti a intervenire in caso di infrazione.</p>\n<p>Qualora avessi bisogno di chiarire dubbi, segnalare problemi o utenti, o semplicemente esprimere un\'opinione sull\'app, potrai aprire un ticket nella sezione «Conosci il Founder Team», selezionando la categoria più adatta alla tua richiesta.</p>\n<p>Ci auguriamo che la tua esperienza su Opal Note sia di tuo gradimento!</p>\n<p style="text-align:right;font-weight:800;color:#FFD34D;">—Il Founder Team 👑🌟</p>';
     const barra = el("div");
     barra.style.cssText = "flex:0 0 auto;display:flex;gap:10px;justify-content:center;padding:12px 16px calc(14px + env(safe-area-inset-bottom, 0px));background:#141210;";
     if (rilettura) {
